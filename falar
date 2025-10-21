@@ -1,0 +1,46 @@
+#!/bin/bash
+
+if [ "$1" == "_F" ]; 
+then
+  
+  FRASE=$(echo "$*" | awk -F '_F' '{print $2}')
+  
+  espeak -s 145 -v pt+f5 "$FRASE"
+  echo "$FRASE"
+  exit 0
+
+else
+  
+  espeak -s 145 -v pt+f5 "$*"
+  
+  while true
+  do
+    read -p "> " TEXTO
+    espeak -s 145 -v pt+f5 "$TEXTO"
+    echo ""
+    
+        if [ "$TEXTO" == "sair" ]; 
+        then
+            exit 0 
+        fi
+  done
+fi
+
+
+
+
+
+
+
+
+#if [ '$1' == '-l' ]; then
+#        espeak -s 145 -v pt+f5 "$*" 
+#else
+#    while true
+#    do
+#        espeak -s 145 -v pt+f5 "$*"
+#        echo "$*" 
+#    done	
+#fi
+
+
